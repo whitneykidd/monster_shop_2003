@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get "/", to: "welcome#index"
-
-  get "/merchants", to: "merchants#index"
-  get "/merchants/new", to: "merchants#new"
-  get "/merchants/:id", to: "merchants#show"
-  post "/merchants", to: "merchants#create"
-  get "/merchants/:id/edit", to: "merchants#edit"
-  patch "/merchants/:id", to: "merchants#update"
-  delete "/merchants/:id", to: "merchants#destroy"
+  
+  resources :merchants
+  # get "/merchants", to: "merchants#index"
+  # get "/merchants/new", to: "merchants#new"
+  # get "/merchants/:id", to: "merchants#show"
+  # post "/merchants", to: "merchants#create"
+  # get "/merchants/:id/edit", to: "merchants#edit"
+  # patch "/merchants/:id", to: "merchants#update"
+  # delete "/merchants/:id", to: "merchants#destroy"
 
   get "/items", to: "items#index"
   get "/items/:id", to: "items#show"
@@ -96,6 +97,14 @@ Rails.application.routes.draw do
     get "/users/:user_id", to: "users#show"
 
   end
+
+  # namespace :admin do
+  #   root "dashboard#show"
+  #   get "/dashboard", to: "dashboard#show"
+  #   resources :orders, only: [:update]
+  #   resources :users, only: [:index, :show]
+  #   resources :merchants, only: [:index, :show, :update, :destroy]
+  # end
 
   resources :logout, only: [:index]
 end

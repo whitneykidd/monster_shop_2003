@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   get "/", to: "welcome#index"
 
-  resources :merchants 
+  resources :merchants do
+  end
 
   resources :items do
     resources :reviews
@@ -55,6 +56,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root "dashboard#show"
+    
     get "/profile", to: "profile#index"
     get "/merchants", to: "merchant#index"
     patch "/merchants/:id/update", to: "merchant#update"
